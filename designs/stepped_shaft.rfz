@@ -1,0 +1,289 @@
+{
+  "version": 1,
+  "name": "Stepped drive shaft",
+  "parameters": [
+    {
+      "name": "d1",
+      "expr": "25 mm",
+      "comment": "journal Ø (bottom)"
+    },
+    {
+      "name": "l1",
+      "expr": "40 mm",
+      "comment": ""
+    },
+    {
+      "name": "d2",
+      "expr": "30 mm",
+      "comment": "bearing seat Ø"
+    },
+    {
+      "name": "l2",
+      "expr": "60 mm",
+      "comment": ""
+    },
+    {
+      "name": "d3",
+      "expr": "40 mm",
+      "comment": "collar Ø"
+    },
+    {
+      "name": "l3",
+      "expr": "10 mm",
+      "comment": "collar width"
+    },
+    {
+      "name": "d4",
+      "expr": "30 mm",
+      "comment": "keyed section Ø"
+    },
+    {
+      "name": "l4",
+      "expr": "80 mm",
+      "comment": ""
+    },
+    {
+      "name": "d5",
+      "expr": "20 mm",
+      "comment": "end journal Ø"
+    },
+    {
+      "name": "l5",
+      "expr": "35 mm",
+      "comment": ""
+    },
+    {
+      "name": "key_w",
+      "expr": "8 mm",
+      "comment": "keyway width"
+    },
+    {
+      "name": "key_depth",
+      "expr": "4 mm",
+      "comment": "keyway depth"
+    },
+    {
+      "name": "key_len",
+      "expr": "45 mm",
+      "comment": "keyway length"
+    }
+  ],
+  "features": [
+    {
+      "id": 1,
+      "name": "Shaft profile",
+      "suppressed": false,
+      "kind": {
+        "Sketch": {
+          "plane": "XY",
+          "offset": "0",
+          "entities": [
+            {
+              "Polyline": {
+                "points": [
+                  [
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    12.5,
+                    0.0
+                  ],
+                  [
+                    12.5,
+                    40.0
+                  ],
+                  [
+                    15.0,
+                    40.0
+                  ],
+                  [
+                    15.0,
+                    100.0
+                  ],
+                  [
+                    20.0,
+                    100.0
+                  ],
+                  [
+                    20.0,
+                    110.0
+                  ],
+                  [
+                    15.0,
+                    110.0
+                  ],
+                  [
+                    15.0,
+                    190.0
+                  ],
+                  [
+                    10.0,
+                    190.0
+                  ],
+                  [
+                    10.0,
+                    225.0
+                  ],
+                  [
+                    0.0,
+                    225.0
+                  ]
+                ],
+                "closed": true
+              }
+            }
+          ],
+          "constraints": [
+            {
+              "type": "position",
+              "p": {
+                "entity": 0,
+                "index": 0
+              },
+              "x": "0",
+              "y": "0"
+            },
+            {
+              "type": "position",
+              "p": {
+                "entity": 0,
+                "index": 1
+              },
+              "x": "d1/2",
+              "y": "0"
+            },
+            {
+              "type": "position",
+              "p": {
+                "entity": 0,
+                "index": 2
+              },
+              "x": "d1/2",
+              "y": "l1"
+            },
+            {
+              "type": "position",
+              "p": {
+                "entity": 0,
+                "index": 3
+              },
+              "x": "d2/2",
+              "y": "l1"
+            },
+            {
+              "type": "position",
+              "p": {
+                "entity": 0,
+                "index": 4
+              },
+              "x": "d2/2",
+              "y": "l1+l2"
+            },
+            {
+              "type": "position",
+              "p": {
+                "entity": 0,
+                "index": 5
+              },
+              "x": "d3/2",
+              "y": "l1+l2"
+            },
+            {
+              "type": "position",
+              "p": {
+                "entity": 0,
+                "index": 6
+              },
+              "x": "d3/2",
+              "y": "l1+l2+l3"
+            },
+            {
+              "type": "position",
+              "p": {
+                "entity": 0,
+                "index": 7
+              },
+              "x": "d4/2",
+              "y": "l1+l2+l3"
+            },
+            {
+              "type": "position",
+              "p": {
+                "entity": 0,
+                "index": 8
+              },
+              "x": "d4/2",
+              "y": "l1+l2+l3+l4"
+            },
+            {
+              "type": "position",
+              "p": {
+                "entity": 0,
+                "index": 9
+              },
+              "x": "d5/2",
+              "y": "l1+l2+l3+l4"
+            },
+            {
+              "type": "position",
+              "p": {
+                "entity": 0,
+                "index": 10
+              },
+              "x": "d5/2",
+              "y": "l1+l2+l3+l4+l5"
+            },
+            {
+              "type": "position",
+              "p": {
+                "entity": 0,
+                "index": 11
+              },
+              "x": "0",
+              "y": "l1+l2+l3+l4+l5"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "Shaft",
+      "suppressed": false,
+      "kind": {
+        "Revolve": {
+          "sketch": 1,
+          "profiles": [
+            0
+          ],
+          "axis": "SketchV",
+          "angle": "360",
+          "op": "NewBody"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "name": "Keyway",
+      "suppressed": false,
+      "kind": {
+        "Box": {
+          "corner": [
+            "d4/2 - key_depth",
+            "l1+l2+l3 + (l4 - key_len)/2",
+            "-key_w/2"
+          ],
+          "size": [
+            "key_depth + 1",
+            "key_len",
+            "key_w"
+          ],
+          "op": "Cut"
+        }
+      }
+    }
+  ],
+  "rollback": null,
+  "next_id": 4
+}

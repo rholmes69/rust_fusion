@@ -1,0 +1,192 @@
+{
+  "version": 1,
+  "name": "Pillow block housing",
+  "parameters": [
+    {
+      "name": "base_l",
+      "expr": "140 mm",
+      "comment": "base length (X)"
+    },
+    {
+      "name": "base_w",
+      "expr": "45 mm",
+      "comment": "base width (Z)"
+    },
+    {
+      "name": "base_t",
+      "expr": "15 mm",
+      "comment": "base thickness"
+    },
+    {
+      "name": "center_h",
+      "expr": "55 mm",
+      "comment": "shaft centre height"
+    },
+    {
+      "name": "boss_od",
+      "expr": "85 mm",
+      "comment": "boss outer diameter"
+    },
+    {
+      "name": "bore",
+      "expr": "52 mm",
+      "comment": "bearing bore"
+    },
+    {
+      "name": "bolt_d",
+      "expr": "13 mm",
+      "comment": "mounting hole diameter"
+    },
+    {
+      "name": "bolt_span",
+      "expr": "110 mm",
+      "comment": "mounting hole spacing"
+    },
+    {
+      "name": "web_w",
+      "expr": "60 mm",
+      "comment": "web width (X)"
+    }
+  ],
+  "features": [
+    {
+      "id": 1,
+      "name": "Base sketch",
+      "suppressed": false,
+      "kind": {
+        "Sketch": {
+          "plane": "XZ",
+          "offset": "0",
+          "entities": [
+            {
+              "Rectangle": {
+                "x": "(0) - (base_l) / 2",
+                "y": "(0) - (base_w) / 2",
+                "width": "base_l",
+                "height": "base_w"
+              }
+            }
+          ],
+          "constraints": []
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "Base",
+      "suppressed": false,
+      "kind": {
+        "Extrude": {
+          "sketch": 1,
+          "profiles": [
+            0
+          ],
+          "distance": "base_t",
+          "extent": "OneSide",
+          "flip": false,
+          "op": "NewBody",
+          "edges": {
+            "kind": "Chamfer",
+            "size": "1.5 mm",
+            "start": false,
+            "end": true
+          }
+        }
+      }
+    },
+    {
+      "id": 3,
+      "name": "Web",
+      "suppressed": false,
+      "kind": {
+        "Box": {
+          "corner": [
+            "-web_w/2",
+            "base_t - 2",
+            "-base_w/2"
+          ],
+          "size": [
+            "web_w",
+            "center_h - base_t + 2",
+            "base_w"
+          ],
+          "op": "Join"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "name": "Boss",
+      "suppressed": false,
+      "kind": {
+        "Cylinder": {
+          "base": [
+            "0",
+            "center_h",
+            "-base_w/2"
+          ],
+          "axis": "Z",
+          "radius": "boss_od/2",
+          "height": "base_w",
+          "op": "Join"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "name": "Bore",
+      "suppressed": false,
+      "kind": {
+        "Cylinder": {
+          "base": [
+            "0",
+            "center_h",
+            "-base_w/2 - 1"
+          ],
+          "axis": "Z",
+          "radius": "bore/2",
+          "height": "base_w + 2",
+          "op": "Cut"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "name": "Bolt hole L",
+      "suppressed": false,
+      "kind": {
+        "Cylinder": {
+          "base": [
+            "-bolt_span/2",
+            "-1",
+            "0"
+          ],
+          "axis": "Y",
+          "radius": "bolt_d/2",
+          "height": "base_t + 2",
+          "op": "Cut"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "name": "Bolt hole R",
+      "suppressed": false,
+      "kind": {
+        "Cylinder": {
+          "base": [
+            "bolt_span/2",
+            "-1",
+            "0"
+          ],
+          "axis": "Y",
+          "radius": "bolt_d/2",
+          "height": "base_t + 2",
+          "op": "Cut"
+        }
+      }
+    }
+  ],
+  "rollback": null,
+  "next_id": 8
+}

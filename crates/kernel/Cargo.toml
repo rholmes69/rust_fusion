@@ -1,0 +1,11 @@
+[package]
+name = "cad-kernel"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Geometry kernel: mesh solids, BSP CSG booleans, extrude/revolve, expressions, STL"
+
+[dependencies]
+glam.workspace = true
+serde.workspace = true
+earcutr.workspace = true

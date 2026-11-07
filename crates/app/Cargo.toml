@@ -1,0 +1,37 @@
+[package]
+name = "rust-fusion"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Parametric 3D CAD desktop app (egui + wgpu)"
+
+[[bin]]
+name = "rust-fusion"
+path = "src/main.rs"
+
+[dependencies]
+cad-kernel = { path = "../kernel" }
+cad-model = { path = "../model" }
+glam.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+eframe = { version = "0.29", default-features = false, features = ["wgpu", "default_fonts", "accesskit", "wayland", "x11"] }
+egui-wgpu = "0.29"
+bytemuck = { version = "1", features = ["derive"] }
+rfd = "0.15"
+log = "0.4"
+env_logger = "0.11"
+ureq = { version = "3", features = ["json"] }
+crossbeam-channel = "0.5"
+dirs = "6"
+base64 = "0.22"
+image = { version = "0.25", default-features = false, features = ["png", "jpeg"] }
+tiny_http = "0.12"
+cpal = { version = "0.18", optional = true }
+candle-core = { version = "0.11", optional = true }
+candle-nn = { version = "0.11", optional = true }
+candle-transformers = { version = "0.11", optional = true }
+
+[features]
+default = ["voice"]
+voice = ["dep:cpal", "dep:candle-core", "dep:candle-nn", "dep:candle-transformers"]
